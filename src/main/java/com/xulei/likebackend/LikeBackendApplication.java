@@ -9,11 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class LikeBackendApplication {
 
     public static void main(String[] args) {
-        run(args);
+        new LikeBackendApplication().run(args);
     }
 
 
-    static void run(String[] args){
+    void run(String[] args){
         SpringApplication.run(LikeBackendApplication.class,args);
         log.info("app start...");
     }
