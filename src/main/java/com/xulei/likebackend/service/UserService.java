@@ -11,5 +11,10 @@ import jakarta.servlet.http.HttpServletRequest;
 */
 public interface UserService extends IService<User> {
 
+    /**
+     * 获取当前登录用户信息
+     * @param request
+     * @return
+     */
     User getLoginUser(HttpServletRequest request);
 }

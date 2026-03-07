@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.xulei.likebackend.model.vo.BlogVO;
 import jakarta.servlet.http.HttpServletRequest;
 
+import java.util.List;
+
 /**
 * @author xl
 * @description 针对表【blog】的数据库操作Service
@@ -20,5 +22,14 @@ public interface BlogService extends IService<Blog> {
      * @return
      */
     BlogVO getBlogVOById(QryBlogRequest qryBlogRequest, HttpServletRequest request);
+
+    /**
+     * 查询帖子列表
+     * @param blogList
+     * @param request
+     * @return
+     */
+    List<BlogVO> getBlogVOList(List<Blog> blogList, HttpServletRequest request);
+
 
 }

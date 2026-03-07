@@ -30,11 +30,11 @@ public class UserController {
      */
     @PostMapping("/login")
     public BaseResponse<User> login(@RequestBody UserLoginRequest userLoginRequest, HttpServletRequest request) {
-        log.info("********login start***********\nrequest={}", request);
+        log.info("********login start***********\nrequest={}", request.toString());
         ThrowUtils.throwIf(userLoginRequest == null, ErrorCode.PARAMS_ERROR, "请求参数不能为空");
         ThrowUtils.throwIf(request == null, ErrorCode.PARAMS_ERROR);
         User user = userService.getById(userLoginRequest.getUserId());
-        log.info("****************************\nuser={}", user);
+        log.info("****************************\nuser={}", user.toString());
         request.getSession().setAttribute(UserConstant.LOGIN_USER, user);
         log.info("********login end***********");
         return ResultUtils.success(user);
@@ -48,10 +48,10 @@ public class UserController {
      */
     @PostMapping("/get/login")
     public BaseResponse<User> getLoginUser(HttpServletRequest request) {
-        log.info("********getLoginUser start***********\nrequest={}", request);
+        log.info("********getLoginUser start***********\nrequest={}", request.toString());
         ThrowUtils.throwIf(request == null, ErrorCode.PARAMS_ERROR);
-        User loginUser = (User) request.getSession().getAttribute(UserConstant.LOGIN_USER);
-        log.info("****************************\nloginUser={}", loginUser);
+        User loginUser = userService.getLoginUser(request);
+        log.info("****************************\nloginUser={}", loginUser.toString());
         log.info("********getLoginUser end***********");
         return ResultUtils.success(loginUser);
     }
